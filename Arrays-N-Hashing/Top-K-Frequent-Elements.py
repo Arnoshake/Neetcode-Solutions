@@ -1,29 +1,32 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        frequency_map = {}
+        # key: number, value: frequency
 
+        #Frequency gives priority to bucket sort over counting sort
+        #populate dictionary
+        for value in nums:                                  # O(N) time and space
+            if value in frequency_map:
+                frequency_map[value] += 1
+            else:
+                frequency_map[value] = 1
         
-        # BRUTE FORCE SOLUTION --> Fails case 2 (runtime error)
-        # Create an array of the size of nums+1 to represent the possible number range
-        countArr = [0] * ( len(nums) + 1 ) # O(1)
-        # iterate through nums and increment the new array at index = to value of nums
-        for value in nums: # O(N)
-            countArr[value] += 1
-        # iterate through new array k times, finding the maximum and then setting that increment value to 0
+        #create/populate bucket representation
+        
+        buckets = [ [] for _ in range (len(nums) + 1)]
+        for key,value in frequency_map.items():              # O(N) time and space
+            buckets[value].append(key)
+        #traverse bucket and return the k most frequent
+        
         solution = []
-        for i in range(k): #O(K)
-            max_val = max(countArr) #O(N)
-            max_val_index = countArr.index(max_val) #O(N)
-            countArr[max_val_index] = -1 # set low for next iteration to find next max
-            solution.append(max_val)
-        # return an array of the solution
-        return solution # O(N) + O(K * N) 
-        
+        for i in range(len(buckets) - 1, -1, -1):           #  best: O(K) worst: O(N) // O(N) Space. (k <= n)
+            for numbers in buckets[i]:                      
+                if (len(solution) == k): return solution
+                solution.append(numbers)
+                if (len(solution) == k): return solution
 
+#SOLUTION BIG O : BESTCASE = O(N + K), WORSECASE = O(N + N) --> All cases simplify to O(N)
+#SOLUTION SPACE COMPLEXITY : O(N)
 
+            
 
-
-
-
-
-
-        
