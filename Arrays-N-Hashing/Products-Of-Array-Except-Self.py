@@ -1,7 +1,6 @@
 # Zachary West 07/08/2025
 # First Solution Attempt Time: 43 mins
 from typing import List
-
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         
