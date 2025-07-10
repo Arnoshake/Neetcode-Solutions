@@ -1,3 +1,5 @@
+# Zachary West 07/10/2025
+#First Solution Attempt Time: 15 mins
 class MinStack:
 
     def __init__(self):
