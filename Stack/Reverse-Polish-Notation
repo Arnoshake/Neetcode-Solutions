@@ -1,5 +1,5 @@
 # Zachary West 07/10/2025
-# First Solution Attempt Time: 8 mins
+# First Solution Attempt Time: 8 mins 
 from typing import List
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
