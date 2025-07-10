@@ -1,0 +1,31 @@
+# Zachary West 07/10/2025
+# First Solution Attempt Time: 8 mins
+from typing import List
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        expression = []
+        for token in tokens:
+            expression.append(token)
+            if token == "-":
+                operator = expression.pop()
+                secondVal = int(expression.pop())
+                firstVal = int(expression.pop())
+                expression.append(firstVal - secondVal)
+            elif token == "+":
+                operator = expression.pop()
+                secondVal = int(expression.pop())
+                firstVal = int(expression.pop())
+                expression.append(firstVal + secondVal)
+            elif token == "*":
+                operator = expression.pop()
+                secondVal = int(expression.pop())
+                firstVal = int(expression.pop())
+                expression.append(firstVal * secondVal)
+            elif token == "/":
+                operator = expression.pop()
+                secondVal = int(expression.pop())
+                firstVal = int(expression.pop())
+                expression.append(firstVal / secondVal)
+        return int(expression.pop())
+            
+        
