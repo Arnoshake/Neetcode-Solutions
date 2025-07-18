@@ -1,5 +1,5 @@
 from typing import List
-# Zachary West 07/10/2025
+# Zachary West 07/18/2025
 #First Solution Attempt Time: 18 mins (help from solution video)
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
