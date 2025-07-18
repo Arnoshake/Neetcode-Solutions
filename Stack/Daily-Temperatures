@@ -1,0 +1,17 @@
+from typing import List
+#Zachary West 07/18/25
+#First Solution Attempt Time: 23 mins -- needed GPT to help conceptually. found this one very confusing
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        stack = []
+        res = [0] * len(temperatures)
+
+        for index,value in enumerate(temperatures):
+            if index == 0:
+                stack.append(0)
+                continue
+            while (stack and value > temperatures[ stack[-1]]): # HOTTER DAY THAN MOST RECENT, UNRESOLVED DAY and STACK NOT EMPTY
+                prev_index = stack.pop()
+                res[prev_index] = index - prev_index #The days since that unresolved day = difference btw then and now indexes
+            stack.append(index)
+        return res  
