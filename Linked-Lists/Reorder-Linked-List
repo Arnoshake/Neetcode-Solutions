@@ -1,0 +1,43 @@
+from typing import Optional
+
+# Zachary West 07/22/2025
+# First Solution Attempt Time: 20 mins --
+
+
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def reorderList(self, head: Optional[ListNode]) -> None:
+        # Concept of Slow & Fast to find specific node (middle)
+        tortoise = head
+        hare = head
+        while hare != None and hare.next:
+            tortoise = tortoise.next
+            hare = hare.next.next
+
+        # Rerverse the array
+        middle = tortoise.next
+        prev = tortoise.next = None #R->L Assignment
+        while middle:
+            temp = middle.next
+            middle.next = prev
+            prev = middle
+            middle = temp
+        
+        front, back = head, prev
+
+        #Work towards center and swap
+        while back:
+            frnt_temp,bck_tmp = front.next,back.next
+            front.next = back
+            back.next = frnt_temp
+            front,back = frnt_temp,bck_tmp
+
+
+        
+            
+        
